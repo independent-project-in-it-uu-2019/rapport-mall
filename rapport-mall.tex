@@ -1,0 +1,261 @@
+% MUST use a4paper option
+% MAY use twoside, smaller font, and other class
+\documentclass[a4paper,12pt]{article}
+% Use UTF-8 encoding in input files
+\usepackage[utf8]{inputenc}
+% If you are writing in English, un-comment the following line:
+% \usepackage[swedish,english]{babel}
+% Use the template for thesis reports
+\usepackage{UppsalaExjobb}
+
+% Useful font packages for maths and symbols
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+
+% for nice code listings
+\usepackage{listings}
+
+% Designval: per default används styckesindrag, men ibland blir det snyggare/mer lättläst med tomrad mellan stycken. Det åstadkoms av de följande raderna.
+% Tycker ni om styckesindrag mera, kommentera bort nästa två rader.
+\parskip=0.8em
+\parindent=0mm
+
+\begin{document}
+
+% Set title, and subtitle if you have one
+\title{Rapportmall för självständigt arbete} % och uppsatsmetodik
+% Use this if you have a subtitle
+%\subtitle{Really Exciting Stuff}
+% Set author names, separated by "\\ " (don't forget the space)
+% List authors alphabetically by last name (unless someone did significantly more/less)
+\author{Sofia Cassel \\ Björn Victor}
+% Set the date and year - use the right language!
+\date{\begin{otherlanguage}{swedish}  %\foreignlanguage doesn't seem to affect \today?
+\today
+\end{otherlanguage}}
+
+% Only need to set the year if it differs from the current year
+%\year=2016
+
+% Ange handledare, ämnesgranskare, examinator om dessa finns
+% Extern handledare: t.ex på företag ni arbetat med?
+%\exthandledare{NN}
+% Intern handledare
+\handledare{Virginia Grande, Tina Vrieler och Björn Victor}
+% Ämnesgranskare används inte på Självständigt arbete i IT
+%\reviewer{NN}
+% På Självständigt arbete i IT är detta BV
+\examinator{Björn Victor}
+
+% Programnamn på svenska och engelska
+\progname{Civilingenj{\"o}rsprogrammet i informationsteknologi}{Computer and Information Engineering Programme}
+
+% Utgivare
+\enhetsnamn{Institutionen för \\ informationsteknologi}
+\besoksadress{ITC, Polacksbacken\\ Lägerhyddsvägen 2}
+\postadress{Box 337 \\ 751 05 Uppsala}
+\hemsida{http:/www.it.uu.se}
+
+% Set the name of the series, and the number in the series
+\seriesname{Självständigt arbete i informationsteknologi}
+% \seriesname{Uppsatsmetodik}
+
+% Get a series number, e.g. from Studentservice Ångström
+%\seriesnumber{UPTEC IT16~0xx}
+% Use the appropriate ISSN for the series
+%\issn{ISSN 1401-5749}
+% Usually this is where it is printed
+%\printer{Ångströmlaboratoriet, Uppsala universitet}
+
+% This creates the title page
+\maketitle
+
+% Change to frontmatter style (e.g. roman page numbers)
+\frontmatter
+
+\begin{abstract}
+Abstract in English, about 10-20 lines. Do not use references; do not use formulas if they can be avoided.
+\begin{enumerate}
+\item What is the problem/issue/subject?
+\item How was the problem solved/attacked?
+\item What are the results, how well was the problem solved?
+\item How good are the results, how useful are they?
+\end{enumerate}
+The abstract should be understandable without reading the whole report (and the rest of the report should be understandable without reading the abstract).
+\end{abstract}
+
+\begin{sammanfattning}
+Sammanfattning på svenska. Se till att det står samma saker i det svenska och det engelska abstractet.
+\begin{enumerate}
+\item Vad är problemet, ämnet?
+\item Hur angreps/löstes problemet?
+\item Vad är resultaten, hur väl löstes problemet?
+\item Hur bra blev resultaten, hur användbara är de?
+\end{enumerate}
+
+Ca 10-20 rader. Använd inte referenser; ej heller formler om det går att undvika.
+
+Abstract ska vara förståeligt utan att läsa resten av rapporten, och resten av rapporten ska kunna läsas utan att läsa abstract.
+\end{sammanfattning}
+
+% Innehållsförteckningen här.
+\tableofcontents
+
+% Här kan man också ha \listoffigures, \listoftables
+\cleardoublepage
+
+
+% Change to main matter style (arabic page numbers, reset page numbers)
+\mainmatter
+
+% Here comes the text of the report.
+
+\section*{Hur ni använder detta malldokument}
+Titta i källdokumentet för diverse inställningar för författare, titel, etc.
+
+\subsection*{Generellt}
+Varje numrerat avsnitt ska finnas med i er slutrapport, om inget annat anges.  
+% Uppsatsmetodik-studenter kan utesluta \textbf{Systemstruktur}, \textbf{Krav} och \textbf{Utvärdering}.
+Välj rubrik på svenska eller engelska beroende på ert valda rapportspråk.
+
+Glöm inte att läsa kurslitteraturen~\cite{dawson:projects-in-computing,dawson:projects-in-computing-old}.
+
+% \subsection*{Uppdateringar av detta dokument}
+% \begin{description}
+% \item[2016-05-16]\mbox{}\\
+
+% \end{description}
+
+
+\section*{Att göra}
+En sektion som beskriver läget för rapporten kan vara användbart i ``veckans inlämning'' för att underlätta feedbacken.
+
+\newpage %%%%%%%%%%%%%%%% OBS! Ta bort allt mellan \mainmatter och här (inkl \newpage) i slutversionen
+
+\section{Introduktion eller Inledning / Introduction}
+Beskriv åtminstone samma saker som i abstract, men mer utförligt. Spara tekniska detaljer till senare.
+\begin{itemize}
+\item 
+Tänk på att börja introduktionen med en mening eller ännu hellre ett helt stycke som ``fångar'' läsaren och motiverar läsaren att fortsätta läsa.  \emph{Vi har valt att göra ett projekt om X} är relevant för er, men kommer inte att vilja få någon att läsa vidare.  Försök åtminstone få med någon slags bakgrund/kontext och (helst) motivation att fortsätta läsa.  Typ \emph{X är ett programspråk som tagit världen med storm.  Vi vill utforska om man kan kombinera X med Y för att göra\ldots}
+\item 
+Se till att ni \emph{kommer till kritan snabbt} – man vill inte läsa igenom två stycken text innan man får veta vad ni tänker göra i ert projekt.  Börja t.ex. \emph{inte} med att presentera alla idéer ni inte valt – läsaren vill veta vad ni ska göra, inte vad ni inte ska göra.
+\item 
+Översiktlig beskrivning av systemet och dess features ska vara under systemdesign / systemstruktur, inte i introduktionen.
+\end{itemize}
+
+\section{Bakgrund / Background}
+Här beskriver ni bakgrunden till ert projekt, d.v.s., det som leder fram till er problemformulering.  Vilket är området, omgivningen, kontextet, bakgrunden för projektet?  Beskriv området (t.ex. ljudbehandling, studieplaner, visualisering, autism...).  Beskriv uppdragsgivare, om ni har (men inte för detaljerat).  Tänk på att bakgrunden och problemet måste vara på en generell akademisk nivå och inte bara relaterat till en uppdragsgivare.
+
+Efter att ha läst bakgrunden ska det vara uppenbart/lätt att förstå att syfte/mål är viktiga.
+
+\section{Syfte, mål, och motivation / Purpose, aims, and motivation}\label{sec:syfte}
+Här beskriver ni i princip er problemformulering.  I detta avsnitt ska framgå syfte, mål, och motivation med projektet. Dessa behöver dock \emph{inte} vara separata underrubriker.
+\paragraph{Syfte.} Vart strävar projektet? vad är det övergripande målet, nyttan, effekterna av projektet?  (t.ex. bättre koll på kosthållning, enklare planering av studier)
+\paragraph{Mål.} Vad ska konkret levereras/utföras av projektet, för att ta oss närmare syftet?
+\paragraph{Motivation.}  Varför är projektet viktigt?  Vilka är det viktigt för, vilka externa intressenter finns?  Hur stort är problemet, vad är följden av att det inte är löst, hur bra vore det att lösa?  Vilken ``lucka'' i området täcker ni?
+Varför är er lösning bättre/annorlunda än andras?
+
+Se till att ni i detta avsnitt övertygar läsaren om att problemet finns, att det inte är löst, och att det är viktigt att lösa.
+
+\subsection{Avgränsningar / Delimitations}
+Här beskriver ni vad ni \emph{inte} gjort, alltså hur ni valt att begränsa er, och motiverar dessa avgränsningar. Detta förtydligar för läsaren som kanske hade förväntningar ni inte uppfyllt.
+
+(I tidiga versioner, men \emph{inte} i slutversionen, kan ni även beskriva vad som bara ska göras om tid/resurser/omständigheter räcker till.)
+
+\section{Relaterat arbete / Related work}
+Här beskriver ni liknande system eller projekt, och förklarar hur de relaterar till ert.  Alltså: vad vet ni om läget när det gäller ``det större problemet'' som projektet ska lösa?  Vilka andra har försökt lösa liknande/närliggande problem, eller gjort relaterade/liknande saker/system? Referera! 
+
+\begin{itemize}
+	\item 
+	Relaterat arbete måste vara på en generell akademisk nivå och inte bara relaterat till en uppdragsgivare, en programmeringsplattform, eller ett särskilt sätt att angripa problemet.
+	\item 
+	När ni jämför ert system med andra, se till att läsaren fått en översikt över vad ert system är först (t.ex. i inledningen) så att vederbörande kan göra en kvalificerad bedömning.
+\item Beskriv vad varje relaterat arbete är (t.ex. en app, en undersökning\ldots), vad deras resultat var, \textbf{och hur det relaterar till ert arbete}.
+\end{itemize}
+
+Ibland är det bra att gruppera relaterade arbeten (t.ex. appar som löser liknande problem, eller andra angreppsätt än tekniska).
+Ibland är det effektivt att efter en grupp relaterade arbeten summera hur de relaterar till ert (t.ex. ``dessa appar har dessa liknande finesser, men ingen av dem hanterar X som är en av våra huvudpoänger'').
+
+Försök övertyga läsaren om att ni gjort ett vettigt urval av relaterat arbete.
+
+\section{Metod eller Tillvägagångssätt / Method}
+Här beskriver ni vilka metoder/verktyg/tekniker ni använt för att lösa problemet / besvara frågeställningen.  Vilka metoder har ni konkret använt för att lösa problemet/bygga systemet?  Vilka tekniker/verktyg använde ni?
+
+Kolla workshop-materialet för exempel på vad metoder kan vara.
+
+Glöm inte att motivera era val av metoder. Finns det flera rimliga alternativ?
+
+Detta avsnitt
+ska \emph{inte} innehålla information om hur gruppen organiserat arbetet (github, trello\ldots) \emph{om} det inte är relevant för resultatet (och det är det oftast inte).
+
+\section{Systemstruktur / System structure}
+Beskriv strukturen både internt (hur ert eget system är uppbyggt) och externt (vilka andra system ert system kommunicerar med). \textbf{Använd figurer} (och text)!
+\begin{itemize}
+\item Vilka delar består systemet av? (T.ex. databas, webbinterface, AI-modul, grafik...) Vilka kommunicerar med vilka, beror av vilka, innehåller vilka andra?
+\item Vilka delar fanns färdiga att använda/anpassa, vilka utvecklade ni själva?
+\item Finns olika alternativa byggblock eller designval? Vilka är argumenten för/emot valen?
+\item Hur kommunicerar delarna, vilka protokoll och/eller dataformat används?
+\item Finns det olika typer av användare/motsv? (T.ex. administratörer resp slutanvändare?)
+\end{itemize}
+
+\subsection{Tänk på följande}
+\begin{itemize}
+\item Var inte för tekniskt detaljerade.  Tanken är att ge en översikt över systemet.  Ni behöver inte beskriva objektmetoder etc. i detalj (om de inte är nya och avgörande för resultatet). Tekniska detaljer och implementation beskriver ni snarare i Huvudddelen.
+\item Se till att ni använder \emph{samma terminologi} i figurer som visar systemet som i texten. 
+\item Anknyt figurerna till texten på ett tydligt sätt. Om ni t.ex. har separata underrubriker som beskriver olika delar/aspekter av systemstrukturen med tillhörande figur, välj antingen en underrubrik per del i figuren eller använd helt andra underrubriker.  Annars kommer läsaren att undra var underrubriken som beskriver del X är, när det finns underrubriker för alla andra delar.
+\end{itemize}
+
+\section{Krav och utvärderingsmetoder / Requirements and evaluation methods}\label{sec:krav}
+
+För de olika funktionaliteterna (och/eller motsv) i ert system, hur ska ni avgöra om de är tillräckligt bra utförda/implementerade? Var går gränsen för ``tillräckligt bra''? (Eller när är de ``för dåliga''?)
+
+Skilj på krav och funktionalitet. Själva funktionaliteterna har ni redan beskrivit i systemstrukturen eller huvuddelen. (Har ni krav på saker ni beskriver först i huvuddelen kan ni lägga det här avsnittet efter huvuddelen.)
+
+Skriv tydliga krav \emph{som går att utvärdera}.  (Hur snabbt? Hur många användare? Hur strömsnålt? eller vad som är relevant).
+
+Beskriv hur utvärderingen ska gå till (automatiserade belastningstester, mätningar, enkäter, fokusgrupper\ldots).
+Beskriv hur externa intressenter involveras i utvärderingen.
+
+\section{DEL x}\label{sec:delX}
+Mellan introduktion och avslutning finns ett eller sannolikt \emph{flera} avsnitt (``huvuddelen'') som innehåller själva bidraget.  Ni får själva välja passande rubriker (INTE ``Huvuddel'' eller ``Bidrag'').  Rubrikerna i huvuddelen ska tillsammans med titeln ge en idé om vad som berättas, en ``berättelse''.
+
+Här kan ni beskriva implementationen, hur systemet används, etc.
+
+Beskriv gärna felhantering och riskanalys: vad kan gå fel när systemet kör/används, vad kan bli följden, och hur hanteras detta?
+
+\section{DEL x+1}
+Se avsnitt~\ref{sec:delX}.
+\section{DEL x+2}
+Se avsnitt~\ref{sec:delX}.
+
+\ldots
+
+\section{Utvärderingsresultat / Evaluation results}
+Beskriv resultaten av utvärderingen, när ni tillämpar de utvärderingsmetoder ni beskrivit i avsnitt~\ref{sec:krav}, och relatera till kraven i samma avsnitt.
+
+\section{Resultat och diskussion / Results and discussion}
+Här beskriver ni först era resultat, vad ni åstadkommit.  Hur bra blev det?
+Sedan granskar ni era resultat kritiskt.  Varför blev det som det blev?  Var resultaten rimliga/bra/dåliga/oväntade\ldots?  
+Vad hade man kunnat göra annorlunda?  Hur relaterar era resultat till liknande arbeten?  
+
+Relatera till mål och syften etc i avsnitt~\ref{sec:syfte}.
+
+\section{Slutsatser / Conclusions}
+Här sammanfattar ni och upprepar ert bidrag (resultaten av ert projekt) och förklarar dess vikt och användning.  Vad var viktigt/nytt/intressant?  (INTE i termer av vad ni lärde er.)
+
+\section{Framtida arbete / Future work}
+Här beskriver ni potentiella framtida utvecklingar av systemet. Var finns förbättringspotential och vad kan man bygga vidare på?
+
+Observera att risk\-be\-döm\-ning, tids\-planering, relation till kursmål \emph{inte} hör hemma i slutrapporten.
+
+% Here comes the bibliography/references.
+\bibliography{refs}
+% Use one of these: IEEEtranS gives numbered references sorted by author, IEEEtranSA gives ``alpha''-style references (also sorted by author)
+%\bibliographystyle{IEEEtranSA}
+\bibliographystyle{IEEEtranS}
+
+\appendix %%%% markerar att resten är appendixar
+\section{Hur man gör appendix}
+Appendixar kan vara bra för bilagor som enkätundersökningar, större kodavsnitt, etc.
+
+För att göra ett appendix, gör vanliga \verb|\section{}| efter \verb|\bibliography{}|, och med en \verb|\appendix| före.
+\end{document}

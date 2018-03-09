@@ -1,0 +1,305 @@
+\NeedsTeXFormat{LaTeX2e}
+% \ProvidesClass{UppsalaExjobb}[2016/02/28 v0.9 Uppsala University TekNat Exjobb Thesis Theme]
+\ProvidesPackage{UppsalaExjobb}
+\def\fileversion{1.2}
+\def\filedate{2016-05-16}
+\def\docdate{2016-05-16}
+
+\typeout{Using UppsalaExjobb style, version \fileversion, dated \filedate}
+
+%\ProcessOptions\relax
+%\LoadClass{book}
+% Causes the options of this class to be passed to the book class
+% Needed to change the text font and other behaviours.
+%\LoadClassWithOptions{report} 
+
+\DeclareFontShape{OT1}{cmr}{bx}{sc}{<-> cmbcsc10}{}
+
+% -------------------------------------------------------------------------------------
+\RequirePackage{graphicx} %needed for covers
+\RequirePackage{color}
+\RequirePackage{xcolor}
+\RequirePackage[english,swedish]{babel}
+\RequirePackage[a4paper]{geometry}
+\usepackage{times,helvet}
+\RequirePackage[hidelinks]{hyperref}
+\urlstyle{same}
+
+%\RequirePackage{a4wide}
+
+%%%%%%%%%%%%%%%%%
+%%%%% Parameters
+
+\let\@seriesname\@empty		%Exjobb 30 hp, Sj.arb, etc
+\let\@seriesnumber\@empty	% nummer i serien
+\let\@progname\@empty		%Program
+\let\@prognameeng\@empty	% program på engelska
+\let\@handledare\@empty		%Handledare
+\let\@exthandledare\@empty	%Extern handledare
+\let\@reviewer\@empty		%Ämnesgranskare
+\let\@examinator\@empty		%Examinator
+
+\let\@issn\@empty		%if there is one
+\let\@printer\@empty		%if there is one
+
+\let\@logo\@empty		%don't usually touch these, filenames for logo
+\let\@logosv\@empty
+\let\@logosvback\@empty
+\let\@logogr\@empty
+
+
+% The commands to set the parameters
+\newcommand{\enhetsnamn}[1]{\gdef\@enhetsnamn{#1}}
+\newcommand{\avdelningsnamn}[1]{\gdef\@avdelningsnamn{#1}}
+\newcommand{\besoksadress}[1]{\gdef\@besoksadress{#1}}
+\newcommand{\postadress}[1]{\gdef\@postadress{#1}}
+\newcommand{\telefon}[1]{\gdef\@telefon{#1}}
+\newcommand{\telefax}[1]{\gdef\@telefax{#1}}
+\newcommand{\hemsida}[1]{\gdef\@hemsida{#1}}
+
+\newcommand{\seriesname}[1]{\def\@seriesname{#1}}
+\newcommand{\seriesnumber}[1]{\def\@seriesnumber{#1}}
+\newcommand{\progname}[2]{\def\@progname{#1}\def\@prognameeng{#2}}
+\newcommand{\handledare}[1]{\def\@handledare{#1}}
+\newcommand{\exthandledare}[1]{\def\@exthandledare{#1}}
+\newcommand{\reviewer}[1]{\def\@reviewer{#1}}
+\newcommand{\examinator}[1]{\def\@examinator{#1}}
+\newcommand{\printer}[1]{\def\@printer{#1}}
+\newcommand{\issn}[1]{\def\@issn{#1}}
+\newcommand{\subtitle}[1]{\def\@subtitle{#1}}\subtitle{}
+
+% This is old remains, don't use or change stuff here!
+\newcommand{\logo}[1]{\def\@logoname{#1}}\logo{./logo_name.pdf}
+\newcommand{\logosv}[1]{\def\@logonamesv{#1}}\logosv{./logo_name_sv.pdf}
+\newcommand{\logogr}[1]{\def\@logonamegr{#1}}\logogr{./logo_grey.pdf}
+
+\def\@logo{\includegraphics[width=30mm]{\@logoname}}
+\def\@logogr{\includegraphics[width=170mm]{\@logonamegr}} 
+\def\@logosv{\includegraphics[width=40mm]{\@logonamesv}}
+\def\@logosvback{\includegraphics[width=30mm]{\@logonamesv}}
+
+% Set empty defaults
+
+\enhetsnamn{}
+\avdelningsnamn{}
+\besoksadress{}
+\postadress{}
+\telefon{}
+\telefax{}
+\hemsida{}
+
+% För vanliga exjobb:
+% \enhetsnamn{Teknisk-naturvetenskaplig fakultet}
+% \avdelningsnamn{Enheten för studentservice}
+% \besoksadress{Ångströmslaboratoriet\\ Lägerhyddsvägen 1\\ Hus 1, plan 1}
+% \postadress{Box 536\\ 751 21 Uppsala}
+% \telefon{018--471~30~03}
+% \hemsida{http://www.teknat.uu.se/student}
+
+%%%%%%%%%%%%%%%%
+
+% -------------------------------------------------------------------------------------
+% C H A P T E R   H E A D I N G AND P A G E   S T Y L E
+% 
+\newcommand\frontmatter{	%@@@@
+	\pagenumbering{roman}
+	\pagestyle{plain}
+}
+\newcommand\mainmatter{		%@@@@
+	\pagenumbering{arabic}
+	\pagestyle{fancy}
+	% The lines below are needed so that the empty pages after the frontmatter are completely empty.
+	\let\origdoublepage\cleardoublepage
+	\newcommand{\clearemptydoublepage}{\clearpage{\pagestyle{empty}\origdoublepage}}
+	\let\cleardoublepage\clearemptydoublepage
+}
+
+\RequirePackage{fancyhdr}
+\renewcommand{\headrulewidth}{0.3pt}
+\if@twoside
+  \fancyhead[LO]{\nouppercase{\textsl{\rightmark}}}
+  \fancyhead[RE]{\nouppercase{\textsl{\leftmark}}}
+  \fancyhead[LE,RO]{\thepage}
+  \fancyfoot{}
+\else
+  \lhead{} \chead{}
+  \rhead{\nouppercase{\textsl{\leftmark}}}
+  \lfoot{} \rfoot{}
+  \cfoot{\thepage}
+\fi
+
+%%%% make all section headers sans-serif
+\RequirePackage{sectsty}
+\allsectionsfont{\sffamily}
+
+
+\setlength{\headheight}{14.5pt}
+
+\def\@timesfont #1#2{\fontfamily{ptm}\fontsize{#1}{#2pt}\selectfont}
+\def\@helvfont #1#2{\fontfamily{phv}\fontsize{#1}{#2pt}\selectfont}
+
+%%%%%%%%% NEW ENVS
+%%%%%%% ABSTRACT
+\renewenvironment{abstract}
+{
+\parindent 5mm
+\parskip 0mm
+\begin{picture}(0,0)(24,250)
+		\put(6,240){\includegraphics[width=30mm]{\@logonamesv}}
+\put(0,230){\parbox[t]{5.5cm}{\raggedright\@helvfont{8}{11} %
+\parskip=\baselineskip
+\textbf{\@enhetsnamn}
+%
+\ifx\@avdelningsnamn\@empty
+\else\newline\@avdelningsnamn\fi
+
+\ifx\@besoksadress\@empty
+\else Bes{\"o}ksadress:\newline
+\@besoksadress
+\fi
+
+\ifx\@postadress\@empty
+\else Postadress:\newline
+\@postadress
+\fi
+
+\ifx\@telefon\@empty
+\else
+Telefon:\newline
+\@telefon\newline
+\fi
+%
+\ifx\@telefax\@empty
+\else
+Telefax:\newline
+\@telefax\newline
+\fi
+\ifx\@hemsida\@empty
+\else
+Hemsida:\newline
+\@hemsida
+\fi
+}}
+\end{picture}
+
+	\thispagestyle{empty}
+	\hspace{3cm}\begin{minipage}[t]{11cm}
+	\begin{otherlanguage}{english}
+	\noindent
+	{\@helvfont{12}{13}{\abstractname}}\\
+	\vspace{0.2cm}
+
+	\noindent
+	{\@helvfont{14}{16}\textbf{\@title}}\\[0.3em]
+	{\@helvfont{12}{15}\@subtitle}
+
+	\vspace{0.2cm}
+	\hrule
+	\vspace{0.3cm}
+	\noindent
+	{\@helvfont{12}{15}\textit{\@author}}
+	\vspace{2em}
+
+\small
+%	\begin{quote}
+}
+{%
+%	\end{quote}
+	\end{otherlanguage}
+\end{minipage}
+
+\vfill
+{\@timesfont{11}{13}
+\noindent
+\ifx\@exthandledare\@empty\else
+Extern handledare: \@exthandledare\\
+\fi
+\ifx\@handledare\@empty\else
+Handledare: \@handledare\\
+\fi
+\ifx\@reviewer\@empty\else
+{\"A}mnesgranskare: \@reviewer\\
+\fi
+\ifx\@examinator\@empty\else
+Examinator: \@examinator\\
+\fi
+\ifx\@issn\@empty\else
+\@issn, 
+\fi
+\@seriesnumber\\
+\ifx\@printer\@empty\else
+Tryckt av: \@printer
+\fi
+}
+%\setlength{\oddsidemargin}{\@tmpoddsidemarg}
+\normalsize
+	\cleardoublepage
+}
+%%%%%%% SAMMANFATTNING
+\newenvironment{sammanfattning}
+{
+% HACK THIS
+	\thispagestyle{plain}
+%        \begin{minipage}[t]{13cm}
+	\begin{otherlanguage}{swedish}
+	\section*{\abstractname}
+	\vspace{0.5cm}
+	%\begin{quote}
+}
+{%
+	%\end{quote}
+	\end{otherlanguage}
+%	\end{minipage}
+	\cleardoublepage
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% F R O N T   P A G E %%%%%%%%%%%%%
+
+\def\@firstTitle{
+ 	\newgeometry{ignoreall,noheadfoot,nomarginpar,margin=0mm}
+	\setlength{\unitlength}{1mm}
+	\thispagestyle{empty}
+	\pagenumbering{gobble}
+	\begin{picture}(0,0)(-9,295) %(24,250)  %oneside: 33,250
+		\put(-15,3){\colorbox{gray!30}{\rule{0cm}{\paperheight}\hspace{4cm}}}
+		\put(-7,250){\includegraphics[width=30mm]{\@logoname}}
+		\put(40,263){\parbox[tr]{14cm}{\raggedleft\@helvfont{10}{14} %
+		\ifx\@seriesnumber\@empty\else
+		  \@seriesnumber\linebreak
+		\fi
+		\@helvfont{14}{16}\@seriesname\linebreak\@date}}
+		\put(40,182){\parbox[bl]{14cm}{\raggedright\@helvfont{25}{30}\@title\vskip 2mm\@helvfont{18}{22}{\@subtitle}}}
+		\put(40,158){\makebox(0,0)[tl]{\line(1,0){140}}}
+		\put(40,150){\parbox[t]{10cm}{\@helvfont{18}{22}%\begin{tabular}[t]{@{}l@{}}
+								   \@author
+								 %\end{tabular}
+								}}
+		\ifx\@progname\@empty\else
+		  \put(40,22){\parbox[br]{14cm}{\raggedleft\@helvfont{14}{16}\@progname}}
+		  \put(40,19){\makebox(0,0)[tl]{\line(1,0){140}}}
+		  \put(40,14){\parbox[br]{14cm}{\raggedleft\@helvfont{13}{16}\textsl{\@prognameeng}}}
+		\fi
+	\end{picture}
+	\null\vfill
+ 	\restoregeometry
+}
+
+\AtBeginDocument{% This is needed so that \maketitle works
+\renewcommand\maketitle{
+	\@firstTitle
+%	\null\vfill
+	\cleardoublepage
+}
+}
+
+% -------------------------------------------------------------------------------------
+% F O N T S E L E C T I O N
+%%% Check if the document is built with xelatex and load the Times new roman font
+\RequirePackage{ifxetex}
+\ifxetex
+   \RequirePackage{fontspec}
+   \setmainfont{Times New Roman}
+\fi
+
+\endinput
