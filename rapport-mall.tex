@@ -20,6 +20,9 @@
 \parindent=0mm
 
 \begin{document}
+% För att ställa in parametrar till IEEEtranS/IEEEtranSA behöver detta ligga här (före första \cite).
+% Se se IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf, avsnitt VII, eller sista biten av IEEEtran/bibtex/IEEEexample.bib.
+\bstctlcite{rapport:BSTcontrol}
 
 % Set title, and subtitle if you have one
 \title{Rapportmall för självständigt arbete} % och uppsatsmetodik
@@ -276,13 +279,17 @@ Här beskriver ni potentiella framtida utvecklingar av systemet. Var finns förb
 
 Observera att risk\-be\-döm\-ning, tids\-planering, relation till kursmål \emph{inte} hör hemma i slutrapporten.
 
-% Here comes the bibliography/references.
-\bibliography{refs}
 % Use one of these:
 %   IEEEtranS gives numbered references like [42] sorted by author,
 %   IEEEtranSA gives ``alpha''-style references like [Lam81] (also sorted by author)
-%\bibliographystyle{IEEEtranSA}
+%\bibliographystyle{IEEEtranS}
 \bibliographystyle{IEEEtranSA}
+
+% Here comes the bibliography/references.
+% För att göra inställningar för IEEEtranS/SA kan man använda ett speciellt bibtex-entry @IEEEtranBSTCTL,
+% se IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf, avsnitt VII, eller sista biten av IEEEtran/bibtex/IEEEexample.bib.
+\bibliography{bibconfig,refs}
+%\bibliography{refs}
 
 \newpage
 \appendix %%%% markerar att resten är appendixar
@@ -342,7 +349,6 @@ istället för \verb|{jun}| eller \verb|"jun"| eller \verb|"June"| eller \verb|"
 
 Ett verktyg för att hantera BibTeX-filer i MacOS är BibDesk (\url{http://bibdesk.sourceforge.net/}).
 
-
 \section{Referenser}
 \label{sec:referenser}
 
@@ -355,9 +361,11 @@ Det finns åtminstone tre syften med utformningen av referenserna och referensli
 \item Man ska kunna hitta referensen i verkligheten.
 \end{enumerate}
 
-Använd numeriska referenser (IEEE-stil~[42]) eller nyckelordsbaserad~[Lam86], inte fotnotstil. Referenserna sorteras alfabetiskt efter författare/motsv i referenslistan. I LaTeX, använd \verb|\bibliographystyle{IEEEtranS}| eller \verb|{IEEEtranSA}| (eller liknande), se rapportmallen.
+Använd numeriska referenser (IEEE-stil~[42]) eller nyckelordsbaserad~[Lam86], inte fotnotstil. Referenserna sorteras alfabetiskt efter författare/motsv i referenslistan. I LaTeX, använd \verb|\bibliographystyle{IEEEtranS}| eller \verb|{IEEEtranSA}| (eller liknande), se rapportmallen. \textbf{Börja} med att använda \verb|{IEEEtranSA}| som tydligare visar när viss info saknas i bibtex-entries (t.ex. år och författare).
 
-Referenserna skrivs i direkt anknytning till det som föranleder referensen (t.ex. ett påstående eller resultat), före eventuellt skiljetecken, och med ett fast mellanslag till föregående ord. I LaTeX, \verb|skriv~\cite{lam86}| för att få en ``non-breaking space''. Se också rapportmallen, och sista stycket på sid 211 i Dawson~\cite{dawson:projects-in-computing}.
+För att göra inställningar för \verb|\bibliographystyle{IEEEtranS/SA}| kan man använda ett speciellt bibtex-entry \texttt{@IEEEtranBSTCTL}, se \texttt{IEEEtran\_bst\_HOWTO.pdf} i directoryt \texttt{IEEEtran/bibtex}, avsnitt VII, eller sista biten av \texttt{IEEEexample.bib} i samma directory.
+
+Referenserna skrivs i direkt anknytning till det som föranleder referensen (t.ex. ett påstående eller resultat), före eventuellt skiljetecken, och med ett fast mellanslag till föregående ord. I La\TeX, \verb|skriv~\cite{lam86}| för att få en ``non-breaking space''. Se också rapportmallen, och sista stycket på sid 211 i Dawson~\cite{dawson:projects-in-computing}.
 
 Det är alltså \emph{inte} en bra approach att skriva referenserna efter ett längre stycke (som vissa verkar lära sig att göra, någonstans). Det gör det oftast otydligt vad som egentligen är hämtat från, eller styrks, av referenserna. I vissa fall kan man vilka göra en kort sammanfattning av vad en författare skriver i en artikel el.dyl., men att bara lägga på en referens sist i stycket är inte tillräckligt tydligt. Det är mycket bättre och tydligare att skriva något i stil med ``Lisa Lagom beskriver\verb|~\cite{lagom-bok}| hur X beror av Y och i sin analys visar hon i detalj hur sambandet ser ut\ldots''.
 
@@ -372,6 +380,10 @@ Om referenslistan huvudsakligen innehåller referenser till ``mer info'' av type
 \url{www.wordpress.org}, \url{www.w3c.org}, \url{developer.android.com}\ldots men få referenser som stöder resonemang, motivation, argument etc (jfr Workshoparna), är det antagligen ett tecken på att det finns få resonemang, motiveringar och argument som behöver stödjas. Då behöver man med största sannolikhet resonera, motivera och argumentera mera!
 
 Även om en referens har en URL till själva texten är det inte nödvändigtvis en webbreferens, utan ibland en artikel/bok el.dyl som råkar vara tllgänglig på nätet. Den ska då beskrivas som artikel/bok/el.dyl, men förstås gärna med URLen.
+
+Försök hitta författare och publiceringsdatum (år, månad) även för webbreferenser, och ange när de lästes. Ett exempel är~\cite{berners-lee:cool-uris} (se \texttt{refs.bib}).
+
+
 
 \section{Formler, figurer, bilder, kod}
 \label{sec:forml-figur-bild}
