@@ -19,6 +19,9 @@
 \parskip=0.8em
 \parindent=0mm
 
+% Designval: vill ni ha en box runt figurer istället för strecken som är default, av-kommentera raden nedan. Obs att både \floatstyle och \restylefloat behövs.
+%\floatstyle{boxed} \restylefloat{figure}
+
 \begin{document}
 % För att ställa in parametrar till IEEEtranS/IEEEtranSA behöver detta ligga här (före första \cite).
 % Se se IEEEtran/bibtex/IEEEtran_bst_HOWTO.pdf, avsnitt VII, eller sista biten av IEEEtran/bibtex/IEEEexample.bib.
@@ -50,7 +53,7 @@
 \examinator{Björn Victor}
 
 % Programnamn på svenska och engelska
-\progname{Civilingenj{\"o}rsprogrammet i informationsteknologi}{Computer and Information Engineering Programme}
+\progname{Civilingenj{\"o}rsprogrammet i informationsteknologi}{Master Programme in Computer and Information Engineering}
 
 % Utgivare
 \enhetsnamn{Institutionen för \\ informationsteknologi}
@@ -212,6 +215,16 @@ Detta avsnitt
 ska \emph{inte} innehålla information om hur gruppen organiserat arbetet (github, trello\ldots) \emph{om} det inte är relevant för resultatet (och det är det oftast inte).
 
 \section{Systemstruktur / System structure}
+\begin{figure}
+\begin{center}
+  \includegraphics[height=5\baselineskip]{logo_name.pdf}
+\hspace{2cm}
+  \includegraphics[height=5\baselineskip]{logo_name_sv.pdf}
+\end{center}
+\caption{Till vänster syns universitetets logotyp i färg, till höger i svartvitt.}
+  \label{fig:exempel}
+\end{figure}
+
 Beskriv strukturen både internt (hur ert eget system är uppbyggt) och externt (vilka andra system ert system kommunicerar med). \textbf{Använd figurer} (och text)!
 \begin{itemize}
 \item Vilka delar består systemet av? (T.ex. databas, webbinterface, AI-modul, grafik...) Vilka kommunicerar med vilka, beror av vilka, innehåller vilka andra?
@@ -393,6 +406,8 @@ Formler och/eller ekvationer måste beskrivas.  Det betyder t.ex. att varje symb
 I engelsk text skriver man ``Figure 3'', inte ``figure 3'', eftersom det fungerar som ett namn på figuren (och motsvarande för Table osv).
 
 Alla figurer och bilder som inte är era egna måste ha referenser.
+
+Figurer presenteras med en linje över, en under, och en mellan figurtexten och själva bilden. För andra presentationer, se macrot \verb|\floatstyle| (googla) -- exempelvis ger \verb|\floatstyle{boxed}| istället en ram runt figuren.
 
 Om ni inkluderar kodsnuttar, se till att de är relevanta och kommenterade, så att man förstår.  Alternativt, för korta snuttar: ge motsvarande förklaring i texten.
 Använd vettigt latex-bibliotek för kod, t.ex. \texttt{listings}.

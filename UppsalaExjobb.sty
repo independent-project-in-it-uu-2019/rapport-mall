@@ -22,8 +22,22 @@
 \RequirePackage[english,swedish]{babel}
 \RequirePackage[a4paper]{geometry}
 \usepackage{times,helvet}
+% line breaks also at hypens in URLs. 
+\RequirePackage[hyphens]{url}
 \RequirePackage[hidelinks]{hyperref}
 \urlstyle{same}
+
+\RequirePackage{float}
+\floatstyle{ruled}
+%\floatstyle{boxed}
+\restylefloat{figure}
+\restylefloat{table}
+% but patch it to put the caption below instead of at top
+\renewcommand\fs@ruled{\def\@fs@cfont{\bfseries}\let\@fs@capt\floatc@ruled
+  \def\@fs@pre{\hrule height.8pt depth0pt \kern2pt}%
+  \def\@fs@post{\kern2pt\hrule\relax}%
+  \def\@fs@mid{\kern2pt\hrule\kern2pt}%
+  \let\@fs@iftopcapt\iffalse}
 
 %\RequirePackage{a4wide}
 
