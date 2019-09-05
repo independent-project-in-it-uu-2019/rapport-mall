@@ -3,8 +3,12 @@
 \documentclass[a4paper,12pt]{article}
 % Use UTF-8 encoding in input files
 \usepackage[utf8]{inputenc}
-% NOTE: If you are writing in English, un-comment the following line:
+
+% Om ni skriver på svenska, använd denna rad:
+\usepackage[english,swedish]{babel}
+% If you are writing in English, instead use the following line:
 % \usepackage[swedish,english]{babel}
+
 % Use the template for thesis reports
 \usepackage{UppsalaExjobb}
 
@@ -409,6 +413,8 @@ När man refererar till ``tjocka'' saker som böcker är det lämpligt att ange 
 
 För mer info om vilken info som behövs för olika typer av referenser, se avsnitt 8.5.3 i Dawson~\cite{dawson:projects-in-computing,dawson:projects-in-computing-old}. (För att referera till flera saker samtidigt (som nyss) skriver man flera BibTeX-nycklar i samma \verb|\cite|.)
 
+Observera att nyhetsartiklar (tidningsartiklar och motsvarande) nästan alltid har ett publiceringsdatum, som ska visas (t.ex. i \verb|note|-fältet), och oftast också en artikelförfattare.
+
 Använd inte direktcitat, såvida inte den exakta formuleringen är viktig.  Skriv hellre ett referat av vad någon sagt. (Se Dawson.)
 
 Om referenslistan huvudsakligen innehåller referenser till ``mer info'' av typen 
@@ -416,7 +422,7 @@ Om referenslistan huvudsakligen innehåller referenser till ``mer info'' av type
 
 Även om en referens har en URL till själva texten är det inte nödvändigtvis en webbreferens, utan ibland en artikel/bok el.dyl som råkar vara tllgänglig på nätet. Den ska då beskrivas som artikel/bok/el.dyl (men förstås gärna med URLen) så att man kan göra en preliminär värdering av referensen redan när man läser referenslistan.
 
-Försök hitta författare och publiceringsdatum (år, månad) även för webbreferenser, och ange när de lästes. Ett exempel är~\cite{berners-lee:cool-uris} (se \texttt{refs.bib}).
+Försök hitta författare och publiceringsdatum (år, månad) även för webbreferenser, och ange \textbf{alltid} när de lästes, eftersom de kan uppdateras när som helst. Ett exempel är~\cite{berners-lee:cool-uris} (se \texttt{refs.bib}).
 
 
 
